@@ -23,14 +23,14 @@ public class ProductRepository {
     public List<Product> getAll() {
         // BU METHODU 1. GOREV ICIN DOLDURUNUZ
         final String SQL = "SELECT id, name, description FROM public.product";
-        List<Product> products = new ArrayList<>();
+        List<Product> product = new ArrayList<>();
         try (PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SQL)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 long id = rs.getLong("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
-                products.add(
+                product.add(
                     new Product(
                         id,
                         name,
@@ -42,7 +42,7 @@ public class ProductRepository {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
-        return products;
+        return product;
     }
     
     public Product get(long id) {
@@ -75,7 +75,7 @@ public class ProductRepository {
             preparedStatement.setString(3, product.getDescription());
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows <= 0) {
-                throw new RuntimeException(String.format("Could not save owner %s!", product.getName()));
+                throw new RuntimeException(String.format("Could not save product %s!", product.getName()));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -94,7 +94,7 @@ public class ProductRepository {
                 preparedStatement.setLong(3, product.getId());
                 int affectedRows = preparedStatement.executeUpdate();
                 if (affectedRows <= 0) {
-                    throw new RuntimeException(String.format("Could not update owner %s!", product.getName()));
+                    throw new RuntimeException(String.format("Could not update product %s!", product.getName()));
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
