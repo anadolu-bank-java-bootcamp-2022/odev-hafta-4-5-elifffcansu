@@ -103,13 +103,13 @@ public class OrderRepository {
         try (PreparedStatement preparedStatement = databaseConnection.getConnection().prepareStatement(SQL)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                long id = rs.getLong("id");
+                long id = orderId;
                 String status = rs.getString("status");
                 String type = rs.getString("type");
                 Order order = this.orderRepository.get(rs.getLong("order_id"));
                 Product product = this.productRepository.get(rs.getLong("product_id"));
                 float amount = rs.getFloat("amount");
-                String amountType = rs.getString("amount_typr");
+                String amountType = rs.getString("amount_type");
                 orderDetail.add(
                     new OrderDetail(
                         id,

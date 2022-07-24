@@ -15,6 +15,9 @@ public class ProductRepository {
 
     DatabaseConnection databaseConnection;
 
+    public ProductRepository(DatabaseConnection databaseConnection2) {
+    }
+
     @Autowired
     public void setDatabaseConnection(DatabaseConnection databaseConnection) {
         this.databaseConnection = databaseConnection;
