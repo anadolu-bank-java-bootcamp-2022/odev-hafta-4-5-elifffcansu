@@ -16,6 +16,7 @@ public class ProductRepository {
     DatabaseConnection databaseConnection;
 
     public ProductRepository(DatabaseConnection databaseConnection2) {
+        databaseConnection=databaseConnection2;
     }
 
     @Autowired

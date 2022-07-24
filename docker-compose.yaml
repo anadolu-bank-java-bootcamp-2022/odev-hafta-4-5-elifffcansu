@@ -2,9 +2,10 @@ version: '3'
 services:
   db:
     image: postgres:13.6
+    container_name: db
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=toor
+      - POSTGRES_USER=swapper
+      - POSTGRES_PASSWORD=swapper
       - POSTGRES_DB=swapper
     ports:
       - "5330:5432"

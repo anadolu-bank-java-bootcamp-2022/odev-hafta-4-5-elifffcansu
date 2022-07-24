@@ -5,15 +5,16 @@ import org.springframework.stereotype.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 @Component
 public class DatabaseConnection {
 
     // VERITABANI AYARLARINI KENDI KURULUMUNUZA GORE GUNCELLEME YAPINIZ.
-    private final String URL = "jdbc:postgresql://localhost/swapper";
+    private final String URL = "jdbc:postgresql://localhost:5432/swapper";
     private final String USER = "postgres";
     private final String PASSWORD = "Cansu123.,";
-
+    
     private Connection connection = null;
 
     public DatabaseConnection() {
